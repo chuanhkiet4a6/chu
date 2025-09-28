@@ -32,7 +32,7 @@
 
       height: 100vh;
       margin: 0;
-      padding: 40px 20px; /* ✅ spacing so cards don’t touch top/bottom */
+      padding: 40px 20px; /* ✅ space so cards don’t touch top/bottom */
       box-sizing: border-box;
 
       overflow: hidden;
@@ -45,6 +45,7 @@
       width: 100%;
       max-width: 1100px;
       align-items: stretch;
+      height: calc(100vh - 80px); /* ✅ both cards equal height */
     }
 
     .card,
@@ -52,15 +53,18 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      border-radius: 20px;
+      box-sizing: border-box;
     }
 
     .card {
       background: var(--card-bg);
-      border-radius: 20px;
       padding: 40px;
       text-align: center;
       box-shadow: 0 0 20px rgba(212,175,55,0.15);
       border: 1px solid rgba(212,175,55,0.3);
+      justify-content: flex-start;
+      align-items: center; /* ✅ center profile */
     }
 
     .avatar {
@@ -86,6 +90,7 @@
     .section {
       margin: 25px 0;
       text-align: center;
+      width: 100%;
     }
 
     .section-title {
@@ -129,10 +134,11 @@
     .company {
       background: linear-gradient(145deg, #1a1a1a, #000);
       padding: 40px;
-      border-radius: 20px;
       border: 1px solid rgba(212,175,55,0.5);
       box-shadow: 0 0 15px rgba(212,175,55,0.2);
       text-align: left;
+      position: relative;
+      overflow: hidden; /* ✅ fade edges clean */
     }
 
     .company h2 {
@@ -157,41 +163,42 @@
       display: none;
     }
 
-    /* bottom fade */
-    .company-content::after {
+    /* fade top & bottom */
+    .company::before,
+    .company::after {
       content: "";
-      position: sticky;
-      bottom: 0;
+      position: absolute;
       left: 0;
       right: 0;
       height: 40px;
-      background: linear-gradient(to bottom, rgba(26,26,26,0), rgba(26,26,26,1));
       pointer-events: none;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
+      z-index: 2;
     }
-
-    /* top fade */
-    .company-content::before {
-      content: "";
-      position: sticky;
+    .company::before {
       top: 0;
-      left: 0;
-      right: 0;
-      height: 40px;
-      background: linear-gradient(to top, rgba(26,26,26,0), rgba(26,26,26,1));
-      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
+    }
+    .company::after {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
     }
 
     /* Mobile Responsive */
     @media (max-width: 900px) {
       body {
-        padding: 20px; /* ✅ smaller gap on mobile */
+        padding: 20px;
       }
       .container {
         grid-template-columns: 1fr;
+        height: auto;
+      }
+      .card,
+      .company {
+        height: auto;
       }
     }
   </style>
@@ -240,8 +247,12 @@
           This block is styled to stand out and balance against your personal profile.
         </p>
         <p>
+          Example long text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat, nunc sit amet dictum
+          malesuada, sapien ligula malesuada odio, in tristique lectus arcu id metus. Proin vitae nunc non orci cursus
+          fermentum. Donec feugiat sapien sed arcu malesuada, at cursus elit hendrerit.
         </p>
         <p>
+          Add as much as you want here — it will scroll inside with fade at top and bottom.
         </p>
       </div>
     </div>
