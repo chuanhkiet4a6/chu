@@ -15,8 +15,7 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color:#0b0b0b;
-      /* Carbon fiber weave locked at final strength */
+      background-color: #0b0b0b;
       background-image: repeating-linear-gradient(
         45deg,
         #0d0d0d 0px,
@@ -26,14 +25,16 @@
       );
       background-size: 8px 8px;
       color: var(--text);
+
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      padding: 20px;
 
-      /* ✅ Remove global scrollbar */
-      overflow: hidden;
+      height: 100vh;       /* full height */
+      margin: 0;
+      padding: 0;
+
+      overflow: hidden;    /* remove global scrollbars */
     }
 
     .container {
@@ -41,7 +42,10 @@
       grid-template-columns: 1fr 1fr;
       gap: 30px;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1100px;
+
+      /* ✅ vertically center and balance */
+      align-items: center;
     }
 
     .card {
