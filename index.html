@@ -3,213 +3,187 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chu - Link in Bio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Luxury Carbon Profile</title>
   <style>
-  :root {
-    --bg: #0b0b0b;
-    --card-bg: #111;
-    --text: #eee;
-    --accent: #d4af37; /* Gold */
-  }
+    :root {
+      --gold: #d4af37;
+      --dark: #0b0b0b;
+      --card-bg: linear-gradient(145deg, #1a1a1a, #000);
+      --text: #f5f5f5;
+    }
 
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color:#0b0b0b;
-    /* Carbon fiber weave locked at final strength */
-    background-image: repeating-linear-gradient(
-      45deg,
-      #0d0d0d 0px,
-      #0d0d0d 1px,
-      #0b0b0b 1px,
-      #0b0b0b 5.8px
-    );
-    background-size: 8px 8px;
-    color: var(--text);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-  }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--dark);
+      background-image: repeating-linear-gradient(
+        45deg,
+        #0d0d0d 0px,
+        #0d0d0d 1px,
+        #0b0b0b 1px,
+        #0b0b0b 5.8px
+      );
+      background-size: 8px 8px;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      overflow: hidden; /* ✅ no global scrolling */
+    }
 
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    width: 100%;
-    max-width: 1100px; /* Slightly narrower for better PC fit */
-    align-items: stretch;
-  }
-
-  .card, .company {
-    background: var(--card-bg);
-    border-radius: 18px;
-    padding: 30px; /* reduced from 40 */
-    text-align: center;
-    box-shadow: 0 0 20px rgba(212,175,55,0.12);
-    border: 1px solid rgba(212,175,55,0.25);
-  }
-
-  .avatar {
-    width: 100px; /* reduced from 120 */
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 15px;
-    border: 3px solid var(--accent);
-  }
-
-  h1 {
-    margin: 8px 0;
-    font-size: 24px;
-  }
-
-  p.tagline {
-    font-size: 15px;
-    color: #bbb;
-    margin-bottom: 20px;
-  }
-
-  .section {
-    margin: 20px 0;
-    text-align: center;
-  }
-
-  .section-title {
-    font-size: 17px;
-    font-weight: bold;
-    color: var(--accent);
-    margin-bottom: 12px;
-    border-bottom: 1px solid rgba(212,175,55,0.3);
-    display: inline-block;
-    padding-bottom: 4px;
-  }
-
-  .links {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 15px;
-  }
-
-  .link {
-    background: #1a1a1a;
-    color: var(--text);
-    padding: 10px 15px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-  }
-
-  .link:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-2px);
-  }
-
-  .company {
-    background: linear-gradient(145deg, #1a1a1a, #000);
-    text-align: left;
-  }
-
-  .company h2 {
-    color: var(--accent);
-    margin-bottom: 12px;
-  }
-
-  .company p {
-    color: #ccc;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  /* Mobile Responsive */
-  @media (max-width: 900px) {
     .container {
-      grid-template-columns: 1fr;
-      max-width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      width: 100%;
+      max-width: 1100px;
+      max-height: 95vh;
+      align-items: center;
     }
 
-    .card, .company {
-      padding: 18px;
-      border-radius: 15px;
+    .card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 18px;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+      height: 100%;
+      overflow: hidden;
     }
 
-    .avatar {
-      width: 80px;
-      height: 80px;
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
-    h1 {
-      font-size: 20px;
+    .profile img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      margin-bottom: 15px;
     }
 
-    p.tagline {
-      font-size: 13px;
+    h2 {
+      margin: 10px 0 5px;
+      font-size: 24px;
+      color: var(--gold);
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 15px;
+      opacity: 0.85;
     }
 
     .section-title {
-      font-size: 15px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      padding-bottom: 5px;
+      text-align: left;
+      width: 100%;
     }
 
-    .links {
-      grid-template-columns: 1fr;
-      gap: 10px;
+    .icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
-    .link {
-      font-size: 13px;
-      padding: 8px;
+    .icons a {
+      font-size: 24px;
+      color: var(--text);
+      text-decoration: none;
+      transition: 0.3s;
     }
-  }
-</style>
+
+    .icons a:hover {
+      color: var(--gold);
+      transform: scale(1.1);
+    }
+
+    .company {
+      background: var(--card-bg);
+      text-align: left;
+      padding: 30px;
+      border-radius: 18px;
+      border: 1px solid rgba(212,175,55,0.5);
+      box-shadow: 0 0 15px rgba(212,175,55,0.2);
+
+      /* ✅ scroll only inside this card if content too long */
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+        max-height: none;
+      }
+      body {
+        overflow-y: auto; /* ✅ allow scroll on small screens */
+        align-items: flex-start;
+        padding: 20px;
+      }
+    }
+  </style>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
-    <!-- Left Section -->
-    <div class="card">
-      <img src="me.jpg" alt="Profile Photo" class="avatar">
-      <h1>Chu</h1>
-      <p class="tagline">I am into business & entrepreneurships✨</p>
+    <!-- Left Card -->
+    <div class="card profile">
+      <img src="https://via.placeholder.com/140" alt="Profile">
+      <h2>Chu</h2>
+      <p>I am into business & entrepreneurships</p>
 
-      <!-- Social Media Section -->
-      <div class="section">
-        <div class="section-title">Social Media</div>
-        <div class="links">
-          <a href="https://www.youtube.com/@anhkietchu1798" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> YouTube</a>
-          <a href="https://discord.gg/N7A3cXRavQ" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Discord</a>
-          <a href="#" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a>
-          <a href="https://www.instagram.com/chuanhkiet6a4/" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
-          <a href="https://x.com/chuanhkiet4a6_" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i> Twitter / X</a>
-          <a href="https://www.tiktok.com/@chuanh_kiet" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i> TikTok</a>
-          <a href="https://www.linkedin.com/in/anhkiet-chu-122044382/" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://www.pinterest.com/chewiech/" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest"></i> Pinterest</a>
-        </div>
+      <div class="section-title">Social Medias</div>
+      <div class="icons">
+        <a href="https://youtube.com/@YourChannel" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://discord.gg/N7A3cXRavQ" target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://facebook.com/YourProfile" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/YourHandle" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/YourProfile" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/in/YourProfile" target="_blank"><i class="fab fa-linkedin"></i></a>
       </div>
 
-      <!-- Messaging Section -->
-      <div class="section">
-        <div class="section-title">Messages</div>
-        <div class="links">
-          <a href="https://t.me/Chuanhkiet" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram</a>
-          <a href="https://wa.me/84931269286" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-          <a href="mailto:chuanhkiet4a6@gmail.com" class="link" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i> Email</a>
-          <a href="#" class="link" target="_blank" rel="noopener noreferrer"><i class="fas fa-comment-dots"></i> Signal</a>
-        </div>
+      <div class="section-title">Messages</div>
+      <div class="icons">
+        <!-- Replace with your actual email -->
+        <a href="mailto:yourname@email.com" target="_blank"><i class="fas fa-envelope"></i></a>
+        <!-- Replace "username" with your Telegram handle -->
+        <a href="https://t.me/username" target="_blank"><i class="fab fa-telegram"></i></a>
+        <!-- Replace "1234567890" with your WhatsApp number -->
+        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <!-- Replace "1234567890" with your Signal number -->
+        <a href="https://signal.me/#p/1234567890" target="_blank"><i class="fas fa-comment-dots"></i></a>
       </div>
     </div>
 
-    <!-- Right Section -->
+    <!-- Right Card -->
     <div class="company">
-      <h2>Currently Partnering With</h2>
-      <p>Your company/brand name here. Add description about the collaboration, role, or achievements. This block is styled to stand out and balance against your personal profile.</p>
+      <h2>About the Company</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.
+        Donec euismod, nisi vel consectetur interdum, nisl nisi consequat nibh,
+        vitae laoreet magna lorem nec eros. Curabitur sed leo sed massa
+        ultricies luctus. Sed consequat, est eget laoreet facilisis, purus
+        sapien tincidunt ligula, nec ultricies urna justo vitae augue.
+      </p>
+      <p>
+        Praesent viverra, eros ac pretium ullamcorper, turpis tortor cursus
+        magna, id sodales mi urna vel magna. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada fames ac turpis egestas.
+      </p>
     </div>
   </div>
 </body>
