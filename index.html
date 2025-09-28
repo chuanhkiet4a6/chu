@@ -16,6 +16,7 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #0b0b0b;
+      /* Carbon fiber weave locked at final strength */
       background-image: repeating-linear-gradient(
         45deg,
         #0d0d0d 0px,
@@ -27,12 +28,11 @@
       color: var(--text);
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* ✅ prevent stretch */
-      min-height: 100vh; /* ✅ allow page to grow */
+      align-items: center;
+      height: 100vh; /* Lock full height */
       margin: 0;
+      overflow: hidden; /* 🚫 Remove scrollbar */
       padding: 20px;
-      box-sizing: border-box;
-      overflow-x: hidden; /* ✅ stop horizontal overflow */
     }
 
     .container {
@@ -41,7 +41,7 @@
       gap: 30px;
       width: 100%;
       max-width: 1200px;
-      box-sizing: border-box;
+      height: 100%; /* Make it fill the screen */
     }
 
     .card, .company {
@@ -53,8 +53,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      box-sizing: border-box;
-      overflow: hidden;
+      overflow: hidden; /* No scroll inside */
     }
 
     .avatar {
@@ -126,7 +125,7 @@
       border: 1px solid rgba(212,175,55,0.5);
       box-shadow: 0 0 15px rgba(212,175,55,0.2);
       text-align: left;
-      overflow-y: auto; /* ✅ only right card scrolls */
+      overflow-y: auto; /* ✅ Only company scrolls if text too long */
     }
 
     .company h2 {
@@ -144,11 +143,12 @@
     @media (max-width: 900px) {
       .container {
         grid-template-columns: 1fr;
+        height: auto; /* Allow vertical stacking */
+        overflow-y: auto; /* Enable scroll on mobile if needed */
       }
 
       body {
-        align-items: stretch; /* ✅ allow stack properly */
-        overflow-y: auto; /* allow scroll */
+        overflow-y: auto; /* Allow scroll on small screens */
       }
     }
   </style>
