@@ -33,25 +33,25 @@
       padding: 20px;
       overflow: hidden; /* ✅ No global scrollbar */
     }
+        
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px; /* more breathing room */
+  width: 95%; /* take almost full width */
+  max-width: 1600px; /* wider than before */
+  max-height: 95vh;
+}
 
-    .container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      width: 100%;
-      max-width: 1200px;
-      max-height: 95vh; /* ✅ fits screen height */
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 40px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(212,175,55,0.15);
-      border: 1px solid rgba(212,175,55,0.3);
-      overflow: hidden;
-    }
+.card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 30px; /* slightly smaller padding so it balances */
+  text-align: center;
+  box-shadow: 0 0 20px rgba(212,175,55,0.15);
+  border: 1px solid rgba(212,175,55,0.3);
+  overflow: hidden;
+}
 
     .avatar {
       width: 120px;
