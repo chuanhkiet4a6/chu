@@ -124,12 +124,12 @@
       box-shadow: 0 0 15px rgba(212,175,55,0.2);
       text-align: left;
 
-      /* ✅ Only scroll inside here if text too long */
+      /* ✅ Only scroll inside if text too long */
       max-height: 400px;
       overflow-y: auto;
     }
 
-    /* ✅ Hide company scrollbar but keep scroll */
+    /* ✅ Hide scrollbar inside company */
     .company::-webkit-scrollbar {
       display: none;
     }
@@ -195,8 +195,11 @@
     <!-- Right Section -->
     <div class="company">
       <h2>Currently Partnering With</h2>
-      <p>Your company/brand name here. Add description about the collaboration, role, or achievements. 
-      This block is styled to stand out and balance against your personal profile.</p>
+      <p>
+        Your company/brand name here. Add description about the collaboration, role, or achievements. 
+        This block is styled to stand out and balance against your personal profile. If you add more text than the 
+        max height allows, it will scroll **inside this box only**, keeping the page clean without global scrollbars.
+      </p>
     </div>
   </div>
 </body>
