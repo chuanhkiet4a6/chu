@@ -3,137 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chu - Profile</title>
+  <title>Chu - Link in Bio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    :root {
+      --bg: #0b0b0b;
+      --card-bg: #111;
+      --text: #eee;
+      --accent: #d4af37; /* Gold */
+    }
+
     body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0b0b0b;
+      background-image: repeating-linear-gradient(
+        45deg,
+        #0d0d0d 0px,
+        #0d0d0d 1px,
+        #0b0b0b 1px,
+        #0b0b0b 5.8px
+      );
+      background-size: 8px 8px;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* ✅ prevent stretch */
+      min-height: 100vh; /* ✅ allow page to grow */
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-x: hidden; /* ✅ stop horizontal overflow */
     }
 
     .container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      max-width: 1200px;   /* Keeps inside screen */
-      margin: 0 auto;      /* Centers layout */
-      padding: 20px;
+      gap: 30px;
+      width: 100%;
+      max-width: 1200px;
       box-sizing: border-box;
     }
 
-    .profile-card,
-    .company-card {
-      background: #111;
-      border: 2px solid #d4af37;
-      border-radius: 15px;
-      padding: 20px;
-      overflow-y: auto;
-      max-height: 90vh;   /* Prevents overflow off-screen */
+    .card, .company {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(212,175,55,0.15);
+      border: 1px solid rgba(212,175,55,0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
       box-sizing: border-box;
+      overflow: hidden;
     }
 
-    .profile-pic {
+    .avatar {
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      border: 5px solid #d4af37;
-      margin: 0 auto 15px auto;
-      display: block;
-      background: #d4af37;
+      object-fit: cover;
+      margin: 0 auto 20px;
+      border: 3px solid var(--accent);
     }
 
     h1 {
-      text-align: center;
-      margin: 0;
+      margin: 10px 0;
+      font-size: 28px;
     }
 
-    p {
-      text-align: center;
-      margin: 10px 0 20px 0;
+    p.tagline {
+      font-size: 16px;
+      color: #bbb;
+      margin-bottom: 25px;
     }
 
-    h2 {
+    .section {
+      margin: 20px 0;
       text-align: center;
-      margin-bottom: 10px;
-      color: #d4af37;
+      flex: 1;
     }
 
-    .social-buttons,
-    .message-buttons {
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 15px;
+      border-bottom: 1px solid rgba(212,175,55,0.3);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .links {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 15px;
+      margin-top: 20px;
     }
 
-    .button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #222;
-      border: none;
-      border-radius: 10px;
-      padding: 10px;
-      color: #fff;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s ease;
+    .link {
+      background: #1a1a1a;
+      color: var(--text);
+      padding: 12px 20px;
+      border-radius: 12px;
       text-decoration: none;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
     }
 
-    .button:hover {
-      background: #d4af37;
-      color: #000;
+    .link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
     }
 
-    .company-card h2 {
-      margin-top: 0;
-    }
-
-    .company-card p {
+    .company {
+      background: linear-gradient(145deg, #1a1a1a, #000);
+      border: 1px solid rgba(212,175,55,0.5);
+      box-shadow: 0 0 15px rgba(212,175,55,0.2);
       text-align: left;
+      overflow-y: auto; /* ✅ only right card scrolls */
+    }
+
+    .company h2 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .company p {
+      color: #ccc;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      body {
+        align-items: stretch; /* ✅ allow stack properly */
+        overflow-y: auto; /* allow scroll */
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Profile Section -->
-    <div class="profile-card">
-      <div class="profile-pic"></div>
+    <!-- Left Section -->
+    <div class="card">
+      <img src="me.jpg" alt="Profile Photo" class="avatar">
       <h1>Chu</h1>
-      <p>I am into business & entrepreneurships ✨</p>
+      <p class="tagline">I am into business & entrepreneurships✨</p>
 
-      <h2>Social Media</h2>
-      <div class="social-buttons">
-        <a href="#" class="button">YouTube</a>
-        <a href="#" class="button">Discord</a>
-        <a href="#" class="button">Facebook</a>
-        <a href="#" class="button">Instagram</a>
-        <a href="#" class="button">Twitter / X</a>
-        <a href="#" class="button">TikTok</a>
-        <a href="#" class="button">LinkedIn</a>
-        <a href="#" class="button">Pinterest</a>
+      <!-- Social Media Section -->
+      <div class="section">
+        <div class="section-title">Social Media</div>
+        <div class="links">
+          <a href="https://www.youtube.com/@anhkietchu1798" class="link" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+          <a href="https://discord.gg/N7A3cXRavQ" class="link" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+          <a href="#" class="link" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="https://www.instagram.com/chuanhkiet6a4/" class="link" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://x.com/chuanhkiet4a6_" class="link" target="_blank"><i class="fab fa-x-twitter"></i> Twitter / X</a>
+          <a href="https://www.tiktok.com/@chuanh_kiet" class="link" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+          <a href="https://www.linkedin.com/in/anhkiet-chu-122044382/" class="link" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://www.pinterest.com/chewiech/" class="link" target="_blank"><i class="fab fa-pinterest"></i> Pinterest</a>
+        </div>
       </div>
 
-      <h2>Messages</h2>
-      <div class="message-buttons">
-        <a href="#" class="button">Telegram</a>
-        <a href="#" class="button">WhatsApp</a>
-        <a href="#" class="button">Email</a>
-        <a href="#" class="button">Signal</a>
+      <!-- Messaging Section -->
+      <div class="section">
+        <div class="section-title">Messages</div>
+        <div class="links">
+          <a href="https://t.me/Chuanhkiet" class="link" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+          <a href="https://wa.me/84931269286" class="link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a href="mailto:chuanhkiet4a6@gmail.com" class="link" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+          <a href="#" class="link" target="_blank"><i class="fas fa-comment-dots"></i> Signal</a>
+        </div>
       </div>
     </div>
 
-    <!-- Company Section -->
-    <div class="company-card">
+    <!-- Right Section -->
+    <div class="company">
       <h2>Currently Partnering With</h2>
-      <p>
-        Your company/brand name here. Add description about the collaboration,
-        role, or achievements. This block is styled to stand out and balance
-        against your personal profile. If the text gets too long, only this
-        section will scroll — the rest of the page stays fixed.
-      </p>
+      <p>Your company/brand name here. Add description about the collaboration, role, or achievements. This block is styled to stand out and balance against your personal profile. If the text gets too long, only this section will scroll — the rest of the page stays fixed.</p>
     </div>
   </div>
 </body>
