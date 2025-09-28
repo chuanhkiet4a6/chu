@@ -15,7 +15,8 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg);
+      background-color:#0b0b0b;
+      /* Carbon fiber weave locked at final strength */
       background-image: repeating-linear-gradient(
         45deg,
         #0d0d0d 0px,
@@ -28,9 +29,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh; /* full screen height */
-      margin: 0;
-      overflow: hidden; /* ✅ no global scrollbar */
+      min-height: 100vh;
+      padding: 20px;
+
+      /* ✅ Remove global scrollbar */
+      overflow: hidden;
     }
 
     .container {
@@ -39,82 +42,70 @@
       gap: 30px;
       width: 100%;
       max-width: 1200px;
-      height: 90vh; /* ✅ both sections fit neatly */
-    }
-
-    .card, .company {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 0 20px rgba(212,175,55,0.15);
-      border: 1px solid rgba(212,175,55,0.3);
-      display: flex;
-      flex-direction: column;
-      height: 100%; /* ✅ equal height */
-      overflow: hidden; /* prevent spill */
     }
 
     .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px;
       text-align: center;
-    }
-
-    .card .content {
-      flex: 1;
-      overflow-y: auto; /* ✅ inner scroll if too tall */
-      padding-right: 8px; /* space for scrollbar */
+      box-shadow: 0 0 20px rgba(212,175,55,0.15);
+      border: 1px solid rgba(212,175,55,0.3);
     }
 
     .avatar {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      margin: 0 auto 20px;
+      margin-bottom: 20px;
       border: 3px solid var(--accent);
     }
 
     h1 {
       margin: 10px 0;
-      font-size: 26px;
+      font-size: 28px;
     }
 
     p.tagline {
-      font-size: 15px;
+      font-size: 16px;
       color: #bbb;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .section {
-      margin: 20px 0;
+      margin: 25px 0;
+      text-align: center;
     }
 
     .section-title {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
       color: var(--accent);
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       border-bottom: 1px solid rgba(212,175,55,0.3);
       display: inline-block;
-      padding-bottom: 4px;
+      padding-bottom: 5px;
     }
 
     .links {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 15px;
+      margin-top: 20px;
     }
 
     .link {
       background: #1a1a1a;
       color: var(--text);
-      padding: 10px 15px;
-      border-radius: 10px;
+      padding: 12px 20px;
+      border-radius: 12px;
       text-decoration: none;
-      font-size: 15px;
+      font-size: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       transition: all 0.3s ease;
       border: 1px solid transparent;
     }
@@ -127,9 +118,24 @@
 
     .company {
       background: linear-gradient(145deg, #1a1a1a, #000);
+      padding: 40px;
+      border-radius: 20px;
       border: 1px solid rgba(212,175,55,0.5);
       box-shadow: 0 0 15px rgba(212,175,55,0.2);
-      justify-content: center;
+      text-align: left;
+
+      /* ✅ Only scroll inside here if text too long */
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    /* ✅ Hide company scrollbar but keep scroll */
+    .company::-webkit-scrollbar {
+      display: none;
+    }
+    .company {
+      -ms-overflow-style: none;  /* IE/Edge */
+      scrollbar-width: none;     /* Firefox */
     }
 
     .company h2 {
@@ -139,21 +145,14 @@
 
     .company p {
       color: #ccc;
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: 15px;
+      line-height: 1.6;
     }
 
     /* Mobile Responsive */
     @media (max-width: 900px) {
       .container {
         grid-template-columns: 1fr;
-        height: auto;
-      }
-      body {
-        overflow-y: auto; /* allow scroll on mobile */
-      }
-      .card, .company {
-        height: auto;
       }
     }
   </style>
@@ -162,35 +161,33 @@
   <div class="container">
     <!-- Left Section -->
     <div class="card">
-      <div class="content">
-        <img src="me.jpg" alt="Profile Photo" class="avatar">
-        <h1>Chu</h1>
-        <p class="tagline">I am into business & entrepreneurships✨</p>
+      <img src="me.jpg" alt="Profile Photo" class="avatar">
+      <h1>Chu</h1>
+      <p class="tagline">I am into business & entrepreneurships✨</p>
 
-        <!-- Social Media Section -->
-        <div class="section">
-          <div class="section-title">Social Media</div>
-          <div class="links">
-            <a href="https://www.youtube.com/@anhkietchu1798" class="link" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-            <a href="https://discord.gg/N7A3cXRavQ" class="link" target="_blank"><i class="fab fa-discord"></i> Discord</a>
-            <a href="#" class="link" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-            <a href="https://www.instagram.com/chuanhkiet6a4/" class="link" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://x.com/chuanhkiet4a6_" class="link" target="_blank"><i class="fab fa-x-twitter"></i> Twitter / X</a>
-            <a href="https://www.tiktok.com/@chuanh_kiet" class="link" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-            <a href="https://www.linkedin.com/in/anhkiet-chu-122044382/" class="link" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://www.pinterest.com/chewiech/" class="link" target="_blank"><i class="fab fa-pinterest"></i> Pinterest</a>
-          </div>
+      <!-- Social Media Section -->
+      <div class="section">
+        <div class="section-title">Social Media</div>
+        <div class="links">
+          <a href="https://www.youtube.com/@anhkietchu1798" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> YouTube</a>
+          <a href="https://discord.gg/N7A3cXRavQ" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Discord</a>
+          <a href="#" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="https://www.instagram.com/chuanhkiet6a4/" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://x.com/chuanhkiet4a6_" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i> Twitter / X</a>
+          <a href="https://www.tiktok.com/@chuanh_kiet" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i> TikTok</a>
+          <a href="https://www.linkedin.com/in/anhkiet-chu-122044382/" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://www.pinterest.com/chewiech/" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest"></i> Pinterest</a>
         </div>
+      </div>
 
-        <!-- Messaging Section -->
-        <div class="section">
-          <div class="section-title">Messages</div>
-          <div class="links">
-            <a href="https://t.me/Chuanhkiet" class="link" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="https://wa.me/84931269286" class="link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="mailto:chuanhkiet4a6@gmail.com" class="link" target="_blank"><i class="fas fa-envelope"></i> Email</a>
-            <a href="#" class="link" target="_blank"><i class="fas fa-comment-dots"></i> Signal</a>
-          </div>
+      <!-- Messaging Section -->
+      <div class="section">
+        <div class="section-title">Messages</div>
+        <div class="links">
+          <a href="https://t.me/Chuanhkiet" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram</a>
+          <a href="https://wa.me/84931269286" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a href="mailto:chuanhkiet4a6@gmail.com" class="link" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i> Email</a>
+          <a href="#" class="link" target="_blank" rel="noopener noreferrer"><i class="fas fa-comment-dots"></i> Signal</a>
         </div>
       </div>
     </div>
@@ -198,7 +195,9 @@
     <!-- Right Section -->
     <div class="company">
       <h2>Currently Partnering With</h2>
-      <p>Your company/brand name here. Add description about the collaboration, role, or achievements. This block is styled to stand out and balance against your personal profile.</p>
+      <p>Your company/brand name here. Add description about the collaboration, role, or achievements. 
+      This block is styled to stand out and balance against your personal profile. If this text becomes very 
+      long, it will scroll **inside only**, and the scrollbar will stay hidden.</p>
     </div>
   </div>
 </body>
