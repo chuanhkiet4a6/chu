@@ -30,11 +30,11 @@
       justify-content: center;
       align-items: center;
 
-      height: 100vh;       /* full height */
+      height: 100vh;
       margin: 0;
       padding: 0;
 
-      overflow: hidden;    /* remove global scrollbars */
+      overflow: hidden; /* remove global scrollbars */
     }
 
     .container {
@@ -43,9 +43,14 @@
       gap: 30px;
       width: 100%;
       max-width: 1100px;
+      align-items: stretch; /* ✅ equal height */
+    }
 
-      /* ✅ vertically center and balance */
-      align-items: center;
+    .card,
+    .company {
+      display: flex;
+      flex-direction: column;
+      height: 100%; /* expand equally */
     }
 
     .card {
@@ -128,29 +133,59 @@
       box-shadow: 0 0 15px rgba(212,175,55,0.2);
       text-align: left;
 
-      /* ✅ Only scroll inside if text too long */
-      max-height: 400px;
-      overflow-y: auto;
-    }
-
-    /* ✅ Hide scrollbar inside company */
-    .company::-webkit-scrollbar {
-      display: none;
-    }
-    .company {
-      -ms-overflow-style: none;  /* IE/Edge */
-      scrollbar-width: none;     /* Firefox */
+      display: flex;
+      flex-direction: column;
     }
 
     .company h2 {
       color: var(--accent);
       margin-bottom: 15px;
+      flex-shrink: 0; /* fixed top */
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* ✅ subtle shadow */
     }
 
-    .company p {
+    .company-content {
+      flex: 1;
+      overflow-y: auto;
       color: #ccc;
       font-size: 15px;
       line-height: 1.6;
+      position: relative; /* for fades */
+
+      /* hide scrollbar */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .company-content::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* bottom fade */
+    .company-content::after {
+      content: "";
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(26,26,26,0), rgba(26,26,26,1));
+      pointer-events: none;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    /* top fade */
+    .company-content::before {
+      content: "";
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(to top, rgba(26,26,26,0), rgba(26,26,26,1));
+      pointer-events: none;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
     }
 
     /* Mobile Responsive */
@@ -199,10 +234,20 @@
     <!-- Right Section -->
     <div class="company">
       <h2>Currently Partnering With</h2>
-      <p>
-        Your company/brand name here. Add description about the collaboration, role, or achievements. 
-        This block is styled to stand out and balance against your personal profile.
-      </p>
+      <div class="company-content">
+        <p>
+          Your company/brand name here. Add description about the collaboration, role, or achievements.
+          This block is styled to stand out and balance against your personal profile.
+        </p>
+        <p>
+          Example long text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat, nunc sit amet dictum
+          malesuada, sapien ligula malesuada odio, in tristique lectus arcu id metus. Proin vitae nunc non orci cursus
+          fermentum. Donec feugiat sapien sed arcu malesuada, at cursus elit hendrerit.
+        </p>
+        <p>
+          Add as much as you want here — it will scroll inside with fade at top and bottom.
+        </p>
+      </div>
     </div>
   </div>
 </body>
