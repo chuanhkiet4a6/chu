@@ -15,7 +15,7 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0b0b0b;
+      background-color:#0b0b0b;
       /* Carbon fiber weave locked at final strength */
       background-image: repeating-linear-gradient(
         45deg,
@@ -31,27 +31,28 @@
       align-items: center;
       min-height: 100vh;
       padding: 20px;
-      overflow: hidden; /* ✅ No global scrollbar */
     }
-        
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px; /* more breathing room */
-  width: 95%; /* take almost full width */
-  max-width: 1600px; /* wider than before */
-  max-height: 95vh;
-}
 
-.card {
-  background: var(--card-bg);
-  border-radius: 20px;
-  padding: 30px; /* slightly smaller padding so it balances */
-  text-align: center;
-  box-shadow: 0 0 20px rgba(212,175,55,0.15);
-  border: 1px solid rgba(212,175,55,0.3);
-  overflow: hidden;
-}
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      width: 100%;
+      max-width: 1200px;
+      align-items: stretch; /* ✅ makes both sides equal height */
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(212,175,55,0.15);
+      border: 1px solid rgba(212,175,55,0.3);
+      display: flex;          /* ✅ makes content distribute inside */
+      flex-direction: column; /* stack content */
+      justify-content: flex-start;
+    }
 
     .avatar {
       width: 120px;
@@ -123,10 +124,9 @@
       border: 1px solid rgba(212,175,55,0.5);
       box-shadow: 0 0 15px rgba(212,175,55,0.2);
       text-align: left;
-
-      /* ✅ scroll only inside this block */
-      max-height: 95vh;
-      overflow-y: auto;
+      display: flex;          /* ✅ so content fits full height too */
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     .company h2 {
@@ -140,18 +140,10 @@
       line-height: 1.6;
     }
 
-    /* ✅ Mobile Responsive */
+    /* Mobile Responsive */
     @media (max-width: 900px) {
-      body {
-        overflow-y: auto; /* allow scroll on small screens */
-        align-items: flex-start;
-      }
       .container {
         grid-template-columns: 1fr;
-        max-height: none;
-      }
-      .company {
-        max-height: none; /* no cutoff on mobile */
       }
     }
   </style>
@@ -184,7 +176,7 @@
         <div class="section-title">Messages</div>
         <div class="links">
           <a href="https://t.me/Chuanhkiet" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram</a>
-          <a href="https://wa.me/" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a href="https://wa.me/84931269286" class="link" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
           <a href="mailto:chuanhkiet4a6@gmail.com" class="link" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i> Email</a>
           <a href="#" class="link" target="_blank" rel="noopener noreferrer"><i class="fas fa-comment-dots"></i> Signal</a>
         </div>
