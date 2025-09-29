@@ -1,4 +1,11 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chu - Link in Bio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
     :root {
       --bg: #0b0b0b;
       --card-bg: #111;
@@ -187,7 +194,6 @@
     
     /* --- MODIFICATION END --- */
 
-
     .link i {
       transition: color 0.3s ease, transform 0.3s ease;
     }
@@ -355,4 +361,103 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
-</style>
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Profile Card -->
+    <div class="card" id="profileCard">
+      <img src="me.jpg" alt="Profile Photo" class="avatar" />
+      <h1 class="animated-text">Chu</h1>
+      <p class="tagline animated-text">I am into business & entrepreneurships✨</p>
+
+      <!-- Social Icons -->
+      <div class="section">
+        <div class="section-title animated-text">Social Media</div>
+        <div class="links" id="socialLinks">
+          <a href="https://www.youtube.com/@anhkietchu1798" class="link tooltip" data-tooltip="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://discord.gg/N7A3cXRavQ" class="link tooltip" data-tooltip="Discord" target="_blank"><i class="fab fa-discord"></i></a>
+          <a href="https://www.facebook.com/" class="link tooltip" data-tooltip="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.instagram.com/chuanhkiet6a4/" class="link tooltip" data-tooltip="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/chuanhkiet4a6_" class="link tooltip" data-tooltip="Twitter / X" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.tiktok.com/@chuanh_kiet" class="link tooltip" data-tooltip="TikTok" target="_blank"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.linkedin.com/in/anhkiet-chu-122044382/" class="link tooltip" data-tooltip="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.pinterest.com/chewiech/" class="link tooltip" data-tooltip="Pinterest" target="_blank"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+
+      <!-- Messaging Icons -->
+      <div class="section">
+        <div class="section-title animated-text">Messages</div>
+        <div class="links" id="messageLinks">
+          <a href="https://t.me/Chuanhkiet" class="link tooltip" data-tooltip="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a href="https://wa.me/84931269286" class="link tooltip" data-tooltip="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:chuanhkiet4a6@gmail.com" class="link tooltip" data-tooltip="Email"><i class="fas fa-envelope"></i></a>
+          <a href="#" class="link tooltip" data-tooltip="Signal"><i class="fas fa-comment-dots"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Company Section -->
+    <div class="company" id="companyCard">
+      <h2 class="animated-text">Currently Partnering With</h2>
+      <div class="company-content">
+        <p class="animated-text">
+          Your company/brand name here. Add description about the collaboration, role, or achievements.
+          This block is styled to stand out and balance against your personal profile.
+        </p>
+        <p class="animated-text">
+        </p>
+        <p class="animated-text">
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Animation for the main cards
+      const profileCard = document.getElementById('profileCard');
+      const companyCard = document.getElementById('companyCard');
+
+      profileCard.classList.add('animated');
+      companyCard.classList.add('animated');
+      companyCard.style.animationDelay = '0.2s'; // Slight delay for company card
+
+      // Animate avatar, title, tagline
+      document.querySelector('.avatar').classList.add('animated');
+      document.querySelector('h1.animated-text').classList.add('animated');
+      document.querySelector('p.tagline.animated-text').classList.add('animated');
+
+      // Animate section titles (e.g., Social Media, Messages, Currently Partnering With)
+      document.querySelectorAll('.section-title.animated-text').forEach((title, index) => {
+        title.classList.add('animated');
+        title.style.animationDelay = `${0.8 + index * 0.1}s`;
+      });
+      document.querySelector('.company h2.animated-text').classList.add('animated');
+      document.querySelector('.company h2.animated-text').style.animationDelay = `${0.9}s`;
+
+
+      // Staggered animation for Social Links
+      const socialLinks = document.querySelectorAll('#socialLinks .link');
+      socialLinks.forEach((link, index) => {
+        link.classList.add('animated');
+        link.style.animationDelay = `${1.0 + index * 0.07}s`; // Start after profile card, stagger by 0.07s
+      });
+
+      // Staggered animation for Message Links (after social links)
+      const messageLinks = document.querySelectorAll('#messageLinks .link');
+      messageLinks.forEach((link, index) => {
+        link.classList.add('animated');
+        link.style.animationDelay = `${1.8 + index * 0.07}s`; // Start after social links, stagger by 0.07s
+      });
+
+      // Animate company content paragraphs
+      document.querySelectorAll('.company-content p.animated-text').forEach((p, index) => {
+          p.classList.add('animated');
+          p.style.animationDelay = `${1.0 + index * 0.15}s`; // Start after company title, stagger
+      });
+    });
+  </script>
+</body>
+</html>
