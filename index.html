@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chu - Link in Bio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile & Company</title>
   <style>
     :root {
-      --bg: #0b0b0b;
       --card-bg: #111;
-      --text: #eee;
-      --accent: #d4af37;
+      --card-border: #222;
+      --highlight: #d4af37;
+      --text: #f5f5f5;
+      --muted: #bbb;
     }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg);
+      background-color: #0b0b0b;
       background-image: repeating-linear-gradient(
         45deg,
         #0d0d0d 0px,
@@ -25,12 +25,14 @@
       );
       background-size: 8px 8px;
       color: var(--text);
+
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+
+      height: 100vh;
       margin: 0;
-      padding: 60px 20px;
+      padding: 40px 0; /* spacing so cards don’t touch top/bottom */
       box-sizing: border-box;
     }
 
@@ -40,234 +42,133 @@
       gap: 30px;
       width: 100%;
       max-width: 1100px;
-      align-items: stretch;
+      align-items: center;
     }
 
-    .card,
-    .company {
+    .card, .company {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
       display: flex;
       flex-direction: column;
-      border-radius: 20px;
-      box-sizing: border-box;
-      margin: 10px 0;
-      transition: all 0.4s ease;
-    }
+      justify-content: space-between;
 
-    .card {
-      background: var(--card-bg);
-      padding: 40px;
-      text-align: center;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow:
-        0 12px 35px rgba(0, 0, 0, 0.6),
-        0 0 20px rgba(212, 175, 55, 0.15),
-        0 0 40px rgba(212, 175, 55, 0.05);
-      justify-content: flex-start;
-      align-items: center;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.7),
-        0 0 25px rgba(212, 175, 55, 0.3),
-        0 0 60px rgba(212, 175, 55, 0.15);
-    }
-
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 3px solid var(--accent);
-    }
-
-    h1 {
-      margin: 10px 0;
-      font-size: 28px;
-    }
-
-    p.tagline {
-      font-size: 16px;
-      color: #bbb;
-      margin-bottom: 25px;
-    }
-
-    .section {
-      margin: 25px 0;
-      text-align: center;
-      width: 100%;
-    }
-
-    .section-title {
-      font-size: 18px;
-      font-weight: bold;
-      color: var(--accent);
-      margin-bottom: 15px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-      display: inline-block;
-      padding-bottom: 5px;
-    }
-
-    .links {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 20px;
-      justify-items: center;
-    }
-
-    .link {
-      background: #1a1a1a;
-      color: var(--text);
-      padding: 18px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      border: 1px solid transparent;
-      position: relative;
-      width: 100%;
-    }
-
-    .link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-4px) scale(1.08);
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
-    }
-
-    .link i {
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .link:hover i {
-      color: var(--accent);
-      transform: scale(1.1);
-    }
-
-    .tooltip::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      top: -45px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(20, 20, 20, 0.95);
-      color: var(--accent);
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 14px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      border: 1px solid rgba(212, 175, 55, 0.6);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-      z-index: 5;
-    }
-
-    .tooltip::before {
-      content: "";
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-width: 6px;
-      border-style: solid;
-      border-color: rgba(20, 20, 20, 0.95) transparent transparent transparent;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-      z-index: 5;
-    }
-
-    .tooltip:hover::after,
-    .tooltip:hover::before {
-      opacity: 1;
-    }
-
-    .company {
-      background: linear-gradient(145deg, #1a1a1a, #000);
-      padding: 40px;
-      border: 1px solid rgba(212, 175, 55, 0.5);
-      box-shadow:
-        0 12px 35px rgba(0, 0, 0, 0.6),
-        0 0 20px rgba(212, 175, 55, 0.2),
-        0 0 50px rgba(212, 175, 55, 0.08);
-      text-align: left;
-      position: relative;
+      /* equal height */
+      height: 80vh;
+      min-height: 600px;
+      max-height: 80vh;
       overflow: hidden;
-    }
-
-    .company:hover {
-      transform: translateY(-8px);
-      box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.75),
-        0 0 30px rgba(212, 175, 55, 0.35),
-        0 0 70px rgba(212, 175, 55, 0.15);
-    }
-
-    .company h2 {
-      color: var(--accent);
-      margin-bottom: 15px;
-    }
-
-    .company-content {
-      color: #ccc;
-      font-size: 15px;
-      line-height: 1.6;
-      max-height: 350px;
-      overflow-y: auto;
       position: relative;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
     }
 
-    .company-content::-webkit-scrollbar {
-      display: none;
+    /* scrollable inner content */
+    .scrollable {
+      overflow-y: auto;
+      padding-right: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--highlight) transparent;
+    }
+    .scrollable::-webkit-scrollbar {
+      width: 6px;
+    }
+    .scrollable::-webkit-scrollbar-thumb {
+      background: var(--highlight);
+      border-radius: 10px;
     }
 
-    .company::before,
-    .company::after {
+    /* fade masks */
+    .card::before, .card::after,
+    .company::before, .company::after {
       content: "";
       position: absolute;
       left: 0;
-      right: 0;
+      width: 100%;
       height: 40px;
       pointer-events: none;
       z-index: 2;
     }
-
-    .company::before {
+    .card::before, .company::before {
       top: 0;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
+      background: linear-gradient(to bottom, var(--card-bg), transparent);
     }
-
-    .company::after {
+    .card::after, .company::after {
       bottom: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
+      background: linear-gradient(to top, var(--card-bg), transparent);
     }
 
-    @media (max-width: 900px) {
-      .container {
-        grid-template-columns: 1fr;
+    h2 {
+      margin: 0 0 10px;
+      color: var(--highlight);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .social-icons a {
+      color: var(--muted);
+      font-size: 24px;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .social-icons a:hover {
+      color: var(--highlight);
+    }
+
+    /* Tooltip with elegant animation */
+    .social-icons a::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: -36px;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: rgba(17,17,17,0.95);
+      border: 1px solid rgba(212,175,55,0.4);
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      white-space: nowrap;
+
+      /* animation states */
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .social-icons a:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ========================
+       Entrance Animation
+    ======================== */
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
       }
-      .links {
-        grid-template-columns: repeat(3, 1fr);
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    @media (max-width: 600px) {
-      .links {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .container > * {
+      opacity: 0;
+      animation: fadeSlideUp 0.9s ease forwards;
+    }
+
+    .container > .card {
+      animation-delay: 0.2s;
+    }
+
+    .container > .company {
+      animation-delay: 0.5s;
     }
   </style>
 </head>
@@ -275,49 +176,26 @@
   <div class="container">
     <!-- Profile Card -->
     <div class="card">
-      <img src="me.jpg" alt="Profile Photo" class="avatar" />
-      <h1>Chu</h1>
-      <p class="tagline">I am into business & entrepreneurships✨</p>
-
-      <!-- Social Icons -->
-      <div class="section">
-        <div class="section-title">Social Media</div>
-        <div class="links">
-          <a href="https://www.youtube.com/@anhkietchu1798" class="link tooltip" data-tooltip="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
-          <a href="https://discord.gg/N7A3cXRavQ" class="link tooltip" data-tooltip="Discord" target="_blank"><i class="fab fa-discord"></i></a>
-          <a href="https://www.facebook.com/" class="link tooltip" data-tooltip="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.instagram.com/chuanhkiet6a4/" class="link tooltip" data-tooltip="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://x.com/chuanhkiet4a6_" class="link tooltip" data-tooltip="Twitter / X" target="_blank"><i class="fab fa-x-twitter"></i></a>
-          <a href="https://www.tiktok.com/@chuanh_kiet" class="link tooltip" data-tooltip="TikTok" target="_blank"><i class="fab fa-tiktok"></i></a>
-          <a href="https://www.linkedin.com/in/anhkiet-chu-122044382/" class="link tooltip" data-tooltip="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="https://www.pinterest.com/chewiech/" class="link tooltip" data-tooltip="Pinterest" target="_blank"><i class="fab fa-pinterest"></i></a>
-        </div>
-      </div>
-
-      <!-- Messaging Icons -->
-      <div class="section">
-        <div class="section-title">Messages</div>
-        <div class="links">
-          <a href="https://t.me/Chuanhkiet" class="link tooltip" data-tooltip="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
-          <a href="https://wa.me/84931269286" class="link tooltip" data-tooltip="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="mailto:chuanhkiet4a6@gmail.com" class="link tooltip" data-tooltip="Email"><i class="fas fa-envelope"></i></a>
-          <a href="#" class="link tooltip" data-tooltip="Signal"><i class="fas fa-comment-dots"></i></a>
+      <div class="scrollable">
+        <h2>Profile</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Praesent malesuada arcu quis neque elementum, non tincidunt arcu fermentum.</p>
+        <div class="social-icons">
+          <a href="#" data-label="Twitter">🐦</a>
+          <a href="#" data-label="LinkedIn">💼</a>
+          <a href="#" data-label="GitHub">🐙</a>
         </div>
       </div>
     </div>
 
-    <!-- Company Section -->
+    <!-- Company Card -->
     <div class="company">
-      <h2>Currently Partnering With</h2>
-      <div class="company-content">
-        <p>
-          Your company/brand name here. Add description about the collaboration, role, or achievements.
-          This block is styled to stand out and balance against your personal profile.
-        </p>
-        <p>
-        </p>
-        <p>
-        </p>
+      <div class="scrollable">
+        <h2>Company</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut dui vel turpis egestas finibus. Integer euismod luctus lorem, a ultrices urna varius et.</p>
+        <p>Donec accumsan, ligula in malesuada sagittis, sapien eros hendrerit justo, sit amet imperdiet erat magna ut risus. Integer fringilla sem sed sapien pharetra feugiat.</p>
+        <p>Morbi id dolor id libero posuere facilisis. Suspendisse potenti. Etiam suscipit efficitur lectus, nec volutpat nisl bibendum id.</p>
+        <p>Aliquam erat volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+        <p>More company info...</p>
       </div>
     </div>
   </div>
