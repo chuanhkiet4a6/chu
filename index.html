@@ -4,31 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chu - Link in Bio</title>
-  
-  <!-- FONT AWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- GOOGLE FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
   <style>
-    /* --- NEW: Refined Color Palette & Typography --- */
     :root {
-      --bg: #121212;
-      --card-bg: #1E1E1E;
-      --text: #E0E0E0;
-      --text-secondary: #a0a0a0;
-      --accent: #BEA44A;
-      --border-color: rgba(190, 164, 74, 0.2);
+      --bg: #0b0b0b;
+      --card-bg: #111;
+      --text: #eee;
+      --accent: #d4af37;
     }
 
     body {
-      /* NEW: Modern font and clean background */
-      font-family: 'Inter', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background-color: var(--bg);
-      background-image: none; /* Cleaner look */
+      background-image: repeating-linear-gradient(
+        45deg,
+        #0d0d0d 0px,
+        #0d0d0d 1px,
+        #0b0b0b 1px,
+        #0b0b0b 5.8px
+      );
+      background-size: 8px 8px;
       color: var(--text);
       display: flex;
       justify-content: center;
@@ -37,15 +32,15 @@
       margin: 0;
       padding: 60px 20px;
       box-sizing: border-box;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Prevent horizontal scroll during initial animation */
     }
 
     .container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px; /* NEW: Increased spacing */
+      gap: 40px; /* MODIFIED: Increased whitespace */
       width: 100%;
-      max-width: 1200px; /* NEW: Slightly wider for better spacing */
+      max-width: 1100px;
       align-items: stretch;
     }
 
@@ -55,12 +50,14 @@
       flex-direction: column;
       border-radius: 20px;
       box-sizing: border-box;
-      margin: 0; /* Removed margin as gap is sufficient */
+      margin: 10px 0;
       transition: all 0.4s ease;
+      /* Initial state for animation */
       opacity: 0;
       transform: translateY(20px);
     }
 
+    /* Animation for the main cards */
     .card.animated,
     .company.animated {
       animation: fade-in-up 0.8s ease-out forwards;
@@ -68,17 +65,23 @@
 
     .card {
       background: var(--card-bg);
-      padding: 50px; /* NEW: More padding */
+      padding: 50px; /* MODIFIED: Increased whitespace */
       text-align: center;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* NEW: Softer shadow */
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(212, 175, 55, 0.15),
+        0 0 40px rgba(212, 175, 55, 0.05);
       justify-content: flex-start;
       align-items: center;
     }
 
     .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(190, 164, 74, 0.1);
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.7),
+        0 0 25px rgba(212, 175, 55, 0.3),
+        0 0 60px rgba(212, 175, 55, 0.15);
     }
 
     .avatar {
@@ -86,33 +89,21 @@
       height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 25px; /* NEW: More spacing */
+      margin-bottom: 20px;
       border: 3px solid var(--accent);
-      opacity: 0;
+      opacity: 0; /* Initial state for animation */
       transform: scale(0.8);
     }
 
+    /* Animation for avatar */
     .avatar.animated {
       animation: scale-in 0.6s ease-out forwards;
-      animation-delay: 0.4s;
+      animation-delay: 0.4s; /* Delay slightly after card appears */
     }
 
-    /* --- NEW: Improved Typography Hierarchy --- */
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin: 0 0 8px 0;
-    }
-    
-    p.tagline {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--text-secondary);
-      margin-top: 0;
-    }
 
     h1, p.tagline {
-      opacity: 0;
+      opacity: 0; /* Initial state for animation */
       transform: translateY(10px);
     }
 
@@ -126,24 +117,22 @@
         animation-delay: 0.7s;
     }
 
+
     .section {
-      margin: 35px 0; /* NEW: More vertical space */
+      margin: 35px 0; /* MODIFIED: Increased whitespace */
       text-align: center;
       width: 100%;
     }
 
     .section-title {
-      /* NEW: More professional styling */
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+      font-size: 18px;
+      font-weight: bold;
       color: var(--accent);
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 15px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
       display: inline-block;
-      padding-bottom: 8px;
-      opacity: 0;
+      padding-bottom: 5px;
+      opacity: 0; /* Initial state for animation */
       transform: translateY(10px);
     }
 
@@ -154,25 +143,26 @@
     .links {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px; /* NEW: More space between icons */
+      gap: 20px; /* MODIFIED: Increased whitespace */
       margin-top: 20px;
       justify-items: center;
     }
 
     .link {
-      background: #2a2a2a; /* NEW: Subtle background */
-      color: var(--text-secondary);
+      background: #1a1a1a;
+      color: var(--text);
       padding: 18px;
       border-radius: 12px;
       text-decoration: none;
-      font-size: 22px; /* NEW: Slightly smaller for refinement */
+      font-size: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
-      border: 1px solid #333; /* NEW: Subtle default border */
+      border: 1px solid transparent;
       position: relative;
       width: 100%;
+      /* Initial state for link animations */
       opacity: 0;
       transform: scale(0.8);
     }
@@ -181,26 +171,25 @@
       animation: scale-in 0.4s ease-out forwards;
     }
     
-    /* --- NEW: Refined and more professional hover effects --- */
     .link:hover {
       border-color: var(--accent);
       color: var(--accent);
-      transform: translateY(-5px) scale(1.1); /* More subtle pop */
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-      background-color: var(--card-bg);
+      transform: translateY(-8px) scale(1.2); 
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
       z-index: 10;
     }
 
     .links:hover .link:not(:hover) {
-        transform: scale(0.95); /* Less aggressive shrink */
-        opacity: 0.7;
+        transform: scale(0.9);
+        opacity: 0.6;
     }
-    
+
     .link i {
-      transition: transform 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     .link:hover i {
+      color: var(--accent);
       transform: scale(1.1);
     }
 
@@ -219,7 +208,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s ease, transform 0.25s ease;
-      border: 1px solid rgba(190, 164, 74, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.6);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
       z-index: 5;
     }
@@ -244,10 +233,13 @@
     }
 
     .company {
-      background: linear-gradient(145deg, #1E1E1E, #121212);
-      padding: 50px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(145deg, #1a1a1a, #000);
+      padding: 50px; /* MODIFIED: Increased whitespace */
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(212, 175, 55, 0.2),
+        0 0 50px rgba(212, 175, 55, 0.08);
       text-align: left;
       position: relative;
       overflow: hidden;
@@ -255,14 +247,16 @@
 
     .company:hover {
       transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(190, 164, 74, 0.15);
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.75),
+        0 0 30px rgba(212, 175, 55, 0.35),
+        0 0 70px rgba(212, 175, 55, 0.15);
     }
 
     .company h2 {
       color: var(--accent);
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-      opacity: 0;
+      margin-bottom: 15px;
+      opacity: 0; /* Initial state for animation */
       transform: translateY(10px);
     }
 
@@ -271,9 +265,9 @@
     }
 
     .company-content {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.7; /* NEW: Improved line height for readability */
+      color: #ccc;
+      font-size: 15px;
+      line-height: 1.6;
       max-height: 350px;
       overflow-y: auto;
       position: relative;
@@ -282,14 +276,14 @@
     }
 
     .company-content p {
-        opacity: 0;
+        opacity: 0; /* Initial state for animation */
         transform: translateY(10px);
-        margin-bottom: 1.5em;
     }
 
     .company-content p.animated {
         animation: fade-in-up 0.6s ease-out forwards;
     }
+
 
     .company-content::-webkit-scrollbar {
       display: none;
@@ -301,21 +295,21 @@
       position: absolute;
       left: 0;
       right: 0;
-      height: 50px;
+      height: 40px;
       pointer-events: none;
       z-index: 2;
     }
 
     .company::before {
       top: 0;
-      background: linear-gradient(to bottom, #1E1E1E, transparent);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
     }
 
     .company::after {
       bottom: 0;
-      background: linear-gradient(to top, #1E1E1E, transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
     }
@@ -403,7 +397,8 @@
           This block is styled to stand out and balance against your personal profile.
         </p>
         <p class="animated-text">
-          A second paragraph can be used to elaborate on key projects or provide more detail about the partnership. The increased line-height makes this easier to read.
+        </p>
+        <p class="animated-text">
         </p>
       </div>
     </div>
@@ -411,17 +406,20 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Animation for the main cards
       const profileCard = document.getElementById('profileCard');
       const companyCard = document.getElementById('companyCard');
 
       profileCard.classList.add('animated');
       companyCard.classList.add('animated');
-      companyCard.style.animationDelay = '0.2s';
+      companyCard.style.animationDelay = '0.2s'; // Slight delay for company card
 
+      // Animate avatar, title, tagline
       document.querySelector('.avatar').classList.add('animated');
       document.querySelector('h1.animated-text').classList.add('animated');
       document.querySelector('p.tagline.animated-text').classList.add('animated');
 
+      // Animate section titles (e.g., Social Media, Messages, Currently Partnering With)
       document.querySelectorAll('.section-title.animated-text').forEach((title, index) => {
         title.classList.add('animated');
         title.style.animationDelay = `${0.8 + index * 0.1}s`;
@@ -429,22 +427,25 @@
       document.querySelector('.company h2.animated-text').classList.add('animated');
       document.querySelector('.company h2.animated-text').style.animationDelay = `${0.9}s`;
 
+
+      // Staggered animation for Social Links
       const socialLinks = document.querySelectorAll('#socialLinks .link');
       socialLinks.forEach((link, index) => {
         link.classList.add('animated');
-        link.style.animationDelay = `${1.0 + index * 0.07}s`;
+        link.style.animationDelay = `${1.0 + index * 0.07}s`; // Start after profile card, stagger by 0.07s
       });
 
+      // Staggered animation for Message Links (after social links)
       const messageLinks = document.querySelectorAll('#messageLinks .link');
-      const socialLinkCount = socialLinks.length;
       messageLinks.forEach((link, index) => {
         link.classList.add('animated');
-        link.style.animationDelay = `${1.0 + (socialLinkCount * 0.07) + 0.3 + (index * 0.07)}s`;
+        link.style.animationDelay = `${1.8 + index * 0.07}s`; // Start after social links, stagger by 0.07s
       });
 
+      // Animate company content paragraphs
       document.querySelectorAll('.company-content p.animated-text').forEach((p, index) => {
           p.classList.add('animated');
-          p.style.animationDelay = `${1.0 + index * 0.15}s`;
+          p.style.animationDelay = `${1.0 + index * 0.15}s`; // Start after company title, stagger
       });
     });
   </script>
