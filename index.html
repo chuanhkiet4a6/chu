@@ -12,6 +12,347 @@
       --text: #eee;
       --accent: #d4af37;
     }
+code
+Code
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  background-image: repeating-linear-gradient(
+    45deg,
+    #0d0d0d 0px,
+    #0d0d0d 1px,
+    #0b0b0b 1px,
+    #0b0b0b 5.8px
+  );
+  background-size: 8px 8px;
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  width: 100%;
+  max-width: 1100px;
+  align-items: stretch;
+}
+
+.card,
+.company {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin: 10px 0;
+  transition: all 0.4s ease;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 40px;
+  text-align: center;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(212, 175, 55, 0.15),
+    0 0 40px rgba(212, 175, 55, 0.05);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(212, 175, 55, 0.3),
+    0 0 60px rgba(212, 175, 55, 0.15);
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid var(--accent);
+}
+
+h1 {
+  margin: 10px 0;
+  font-size: 28px;
+}
+
+p.tagline {
+  font-size: 16px;
+  color: #bbb;
+  margin-bottom: 25px;
+}
+
+.section {
+  margin: 25px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+  justify-items: center;
+}
+
+.link {
+  background: #1a1a1a;
+  color: var(--text);
+  padding: 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  position: relative;
+  width: 100%;
+}
+
+.link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+}
+
+.link i {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.link:hover i {
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 20, 0.95);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(20, 20, 20, 0.95) transparent transparent transparent;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 5;
+}
+
+.tooltip:hover::after,
+.tooltip:hover::before {
+  opacity: 1;
+}
+
+.company {
+  background: linear-gradient(145deg, #1a1a1a, #000);
+  padding: 40px;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(212, 175, 55, 0.2),
+    0 0 50px rgba(212, 175, 55, 0.08);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.company:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.75),
+    0 0 30px rgba(212, 175, 55, 0.35),
+    0 0 70px rgba(212, 175, 55, 0.15);
+}
+
+.company h2 {
+  color: var(--accent);
+  margin-bottom: 15px;
+}
+
+.company-content {
+  color: #ccc;
+  font-size: 15px;
+  line-height: 1.6;
+  max-height: 350px;
+  overflow-y: auto;
+  position: relative;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.company-content::-webkit-scrollbar {
+  display: none;
+}
+
+.company::before,
+.company::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.company::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.company::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .links {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Profile Card -->
+    <div class="card">
+      <img src="me.jpg" alt="Profile Photo" class="avatar" />
+      <h1>Chu</h1>
+      <p class="tagline">I am into business & entrepreneurships✨</p>
+code
+Code
+<!-- Social Icons -->
+  <div class="section">
+    <div class="section-title">Social Media</div>
+    <div class="links">
+      <a href="https://www.youtube.com/@anhkietchu1798" class="link tooltip" data-tooltip="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://discord.gg/N7A3cXRavQ" class="link tooltip" data-tooltip="Discord" target="_blank"><i class="fab fa-discord"></i></a>
+      <a href="https://www.facebook.com/" class="link tooltip" data-tooltip="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/chuanhkiet6a4/" class="link tooltip" data-tooltip="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://x.com/chuanhkiet4a6_" class="link tooltip" data-tooltip="Twitter / X" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.tiktok.com/@chuanh_kiet" class="link tooltip" data-tooltip="TikTok" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.linkedin.com/in/anhkiet-chu-122044382/" class="link tooltip" data-tooltip="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.pinterest.com/chewiech/" class="link tooltip" data-tooltip="Pinterest" target="_blank"><i class="fab fa-pinterest"></i></a>
+    </div>
+  </div>
+
+  <!-- Messaging Icons -->
+  <div class="section">
+    <div class="section-title">Messages</div>
+    <div class="links">
+      <a href="https://t.me/Chuanhkiet" class="link tooltip" data-tooltip="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+      <a href="https://wa.me/84931269286" class="link tooltip" data-tooltip="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:chuanhkiet4a6@gmail.com" class="link tooltip" data-tooltip="Email"><i class="fas fa-envelope"></i></a>
+      <a href="#" class="link tooltip" data-tooltip="Signal"><i class="fas fa-comment-dots"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- Company Section -->
+<div class="company">
+  <h2>Currently Partnering With</h2>
+  <div class="company-content">
+    <p>
+      Your company/brand name here. Add description about the collaboration, role, or achievements.
+      This block is styled to stand out and balance against your personal profile.
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+  </div>
+</div>
+  </div>
+</body>
+</html>
+I want: 
+✅ New entrance animation plays only once when the page loads.
+✅ Socials appear first, staggered one by one.
+✅ Messages appear after socials, also staggered.
+Model
+This is a great request! Adding entrance animations will definitely make your "Link in Bio" page feel more dynamic and engaging.
+To achieve the "play only once on load" and staggered animation effects, we'll need to use JavaScript. We'll leverage CSS animations for the actual visual effect and JavaScript to manage when they start and apply the staggering.
+Here's how we can implement this:
+Define CSS Animations: We'll create a simple fade-in-up animation and a scale-in animation.
+Add hidden class: Initially, all animated elements will have a hidden class that makes them invisible and moves them slightly off-screen.
+JavaScript for Staggering: We'll use JavaScript to remove the hidden class from elements in a staggered fashion after the page loads. We'll also use sessionStorage to ensure the animation plays only once per session.
+Here's the updated HTML and CSS with the necessary JavaScript:
+code
+Html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chu - Link in Bio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --card-bg: #111;
+      --text: #eee;
+      --accent: #d4af37;
+    }
 
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -32,6 +373,7 @@
       margin: 0;
       padding: 60px 20px;
       box-sizing: border-box;
+      overflow-x: hidden; /* Prevent horizontal scroll during initial animation */
     }
 
     .container {
@@ -51,6 +393,15 @@
       box-sizing: border-box;
       margin: 10px 0;
       transition: all 0.4s ease;
+      /* Initial state for animation */
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* Animation for the main cards */
+    .card.animated,
+    .company.animated {
+      animation: fade-in-up 0.8s ease-out forwards;
     }
 
     .card {
@@ -81,18 +432,32 @@
       object-fit: cover;
       margin-bottom: 20px;
       border: 3px solid var(--accent);
+      opacity: 0; /* Initial state for animation */
+      transform: scale(0.8);
     }
 
-    h1 {
-      margin: 10px 0;
-      font-size: 28px;
+    /* Animation for avatar */
+    .avatar.animated {
+      animation: scale-in 0.6s ease-out forwards;
+      animation-delay: 0.4s; /* Delay slightly after card appears */
     }
 
-    p.tagline {
-      font-size: 16px;
-      color: #bbb;
-      margin-bottom: 25px;
+
+    h1, p.tagline {
+      opacity: 0; /* Initial state for animation */
+      transform: translateY(10px);
     }
+
+    h1.animated {
+        animation: fade-in-up 0.6s ease-out forwards;
+        animation-delay: 0.6s;
+    }
+
+    p.tagline.animated {
+        animation: fade-in-up 0.6s ease-out forwards;
+        animation-delay: 0.7s;
+    }
+
 
     .section {
       margin: 25px 0;
@@ -108,6 +473,12 @@
       border-bottom: 1px solid rgba(212, 175, 55, 0.3);
       display: inline-block;
       padding-bottom: 5px;
+      opacity: 0; /* Initial state for animation */
+      transform: translateY(10px);
+    }
+
+    .section-title.animated {
+        animation: fade-in-up 0.6s ease-out forwards;
     }
 
     .links {
@@ -132,6 +503,13 @@
       border: 1px solid transparent;
       position: relative;
       width: 100%;
+      /* Initial state for link animations */
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    .link.animated {
+      animation: scale-in 0.4s ease-out forwards;
     }
 
     .link:hover {
@@ -213,6 +591,12 @@
     .company h2 {
       color: var(--accent);
       margin-bottom: 15px;
+      opacity: 0; /* Initial state for animation */
+      transform: translateY(10px);
+    }
+
+    .company h2.animated {
+        animation: fade-in-up 0.6s ease-out forwards;
     }
 
     .company-content {
@@ -225,6 +609,16 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+
+    .company-content p {
+        opacity: 0; /* Initial state for animation */
+        transform: translateY(10px);
+    }
+
+    .company-content p.animated {
+        animation: fade-in-up 0.6s ease-out forwards;
+    }
+
 
     .company-content::-webkit-scrollbar {
       display: none;
@@ -255,6 +649,29 @@
       border-bottom-right-radius: 20px;
     }
 
+    /* Keyframe Animations */
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scale-in {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
     @media (max-width: 900px) {
       .container {
         grid-template-columns: 1fr;
@@ -274,15 +691,15 @@
 <body>
   <div class="container">
     <!-- Profile Card -->
-    <div class="card">
+    <div class="card" id="profileCard">
       <img src="me.jpg" alt="Profile Photo" class="avatar" />
-      <h1>Chu</h1>
-      <p class="tagline">I am into business & entrepreneurships✨</p>
+      <h1 class="animated-text">Chu</h1>
+      <p class="tagline animated-text">I am into business & entrepreneurships✨</p>
 
       <!-- Social Icons -->
       <div class="section">
-        <div class="section-title">Social Media</div>
-        <div class="links">
+        <div class="section-title animated-text">Social Media</div>
+        <div class="links" id="socialLinks">
           <a href="https://www.youtube.com/@anhkietchu1798" class="link tooltip" data-tooltip="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
           <a href="https://discord.gg/N7A3cXRavQ" class="link tooltip" data-tooltip="Discord" target="_blank"><i class="fab fa-discord"></i></a>
           <a href="https://www.facebook.com/" class="link tooltip" data-tooltip="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -296,8 +713,8 @@
 
       <!-- Messaging Icons -->
       <div class="section">
-        <div class="section-title">Messages</div>
-        <div class="links">
+        <div class="section-title animated-text">Messages</div>
+        <div class="links" id="messageLinks">
           <a href="https://t.me/Chuanhkiet" class="link tooltip" data-tooltip="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
           <a href="https://wa.me/84931269286" class="link tooltip" data-tooltip="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
           <a href="mailto:chuanhkiet4a6@gmail.com" class="link tooltip" data-tooltip="Email"><i class="fas fa-envelope"></i></a>
@@ -307,19 +724,80 @@
     </div>
 
     <!-- Company Section -->
-    <div class="company">
-      <h2>Currently Partnering With</h2>
+    <div class="company" id="companyCard">
+      <h2 class="animated-text">Currently Partnering With</h2>
       <div class="company-content">
-        <p>
+        <p class="animated-text">
           Your company/brand name here. Add description about the collaboration, role, or achievements.
           This block is styled to stand out and balance against your personal profile.
         </p>
-        <p>
+        <p class="animated-text">
         </p>
-        <p>
+        <p class="animated-text">
         </p>
       </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hasAnimated = sessionStorage.getItem('hasAnimated');
+
+      if (!hasAnimated) {
+        // Mark that the animation has played
+        sessionStorage.setItem('hasAnimated', 'true');
+
+        // Animation for the main cards
+        const profileCard = document.getElementById('profileCard');
+        const companyCard = document.getElementById('companyCard');
+
+        profileCard.classList.add('animated');
+        companyCard.classList.add('animated');
+        companyCard.style.animationDelay = '0.2s'; // Slight delay for company card
+
+        // Animate avatar, title, tagline
+        document.querySelector('.avatar').classList.add('animated');
+        document.querySelector('h1.animated-text').classList.add('animated');
+        document.querySelector('p.tagline.animated-text').classList.add('animated');
+
+        // Animate section titles (e.g., Social Media, Messages, Currently Partnering With)
+        document.querySelectorAll('.section-title.animated-text').forEach((title, index) => {
+          title.classList.add('animated');
+          title.style.animationDelay = `${0.8 + index * 0.1}s`;
+        });
+        document.querySelector('.company h2.animated-text').classList.add('animated');
+        document.querySelector('.company h2.animated-text').style.animationDelay = `${0.9}s`;
+
+
+        // Staggered animation for Social Links
+        const socialLinks = document.querySelectorAll('#socialLinks .link');
+        socialLinks.forEach((link, index) => {
+          link.classList.add('animated');
+          link.style.animationDelay = `${1.0 + index * 0.07}s`; // Start after profile card, stagger by 0.07s
+        });
+
+        // Staggered animation for Message Links (after social links)
+        const messageLinks = document.querySelectorAll('#messageLinks .link');
+        messageLinks.forEach((link, index) => {
+          link.classList.add('animated');
+          link.style.animationDelay = `${1.8 + index * 0.07}s`; // Start after social links, stagger by 0.07s
+        });
+
+        // Animate company content paragraphs
+        document.querySelectorAll('.company-content p.animated-text').forEach((p, index) => {
+            p.classList.add('animated');
+            p.style.animationDelay = `${1.0 + index * 0.15}s`; // Start after company title, stagger
+        });
+
+
+      } else {
+        // If animation has already played, ensure elements are visible immediately
+        document.querySelectorAll('.card, .company, .avatar, h1, p.tagline, .section-title, .link, .company h2, .company-content p').forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+      }
+    });
+  </script>
 </body>
 </html>
