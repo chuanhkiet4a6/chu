@@ -51,21 +51,14 @@
       box-sizing: border-box;
       margin: 10px 0;
       transition: all 0.4s ease;
-      opacity: 0;               /* start hidden */
-      transform: translateY(30px); /* slide up effect */
+      opacity: 0; /* ✅ start hidden for entrance animation */
+      transform: translateY(30px);
       animation: fadeUp 0.8s ease forwards;
     }
 
-    /* Stagger company after card */
+    /* ✅ Stagger cards entrance */
     .card { animation-delay: 0.2s; }
     .company { animation-delay: 0.5s; }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
 
     .card {
       background: var(--card-bg);
@@ -146,27 +139,28 @@
       border: 1px solid transparent;
       position: relative;
       width: 100%;
-      opacity: 0;             /* start hidden */
-      transform: scale(0.8);  /* pop in */
-      animation: popIn 0.5s forwards;
+
+      /* ✅ Icon entrance animation */
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeUp 0.6s forwards;
     }
 
-    @keyframes popIn {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
+    /* ✅ Social media stagger */
+    .section:nth-of-type(1) .link:nth-child(1) { animation-delay: 0.8s; }
+    .section:nth-of-type(1) .link:nth-child(2) { animation-delay: 1.0s; }
+    .section:nth-of-type(1) .link:nth-child(3) { animation-delay: 1.2s; }
+    .section:nth-of-type(1) .link:nth-child(4) { animation-delay: 1.4s; }
+    .section:nth-of-type(1) .link:nth-child(5) { animation-delay: 1.6s; }
+    .section:nth-of-type(1) .link:nth-child(6) { animation-delay: 1.8s; }
+    .section:nth-of-type(1) .link:nth-child(7) { animation-delay: 2.0s; }
+    .section:nth-of-type(1) .link:nth-child(8) { animation-delay: 2.2s; }
 
-    /* stagger icons */
-    .links .link:nth-child(1) { animation-delay: 0.8s; }
-    .links .link:nth-child(2) { animation-delay: 1.0s; }
-    .links .link:nth-child(3) { animation-delay: 1.2s; }
-    .links .link:nth-child(4) { animation-delay: 1.4s; }
-    .links .link:nth-child(5) { animation-delay: 1.6s; }
-    .links .link:nth-child(6) { animation-delay: 1.8s; }
-    .links .link:nth-child(7) { animation-delay: 2.0s; }
-    .links .link:nth-child(8) { animation-delay: 2.2s; }
+    /* ✅ Messaging stagger */
+    .section:nth-of-type(2) .link:nth-child(1) { animation-delay: 2.6s; }
+    .section:nth-of-type(2) .link:nth-child(2) { animation-delay: 2.8s; }
+    .section:nth-of-type(2) .link:nth-child(3) { animation-delay: 3.0s; }
+    .section:nth-of-type(2) .link:nth-child(4) { animation-delay: 3.2s; }
 
     .link:hover {
       border-color: var(--accent);
@@ -289,6 +283,11 @@
       border-bottom-right-radius: 20px;
     }
 
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 900px) {
       .container {
         grid-template-columns: 1fr;
@@ -348,10 +347,8 @@
           Your company/brand name here. Add description about the collaboration, role, or achievements.
           This block is styled to stand out and balance against your personal profile.
         </p>
-        <p>
-        </p>
-        <p>
-        </p>
+        <p></p>
+        <p></p>
       </div>
     </div>
   </div>
