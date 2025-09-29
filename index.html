@@ -38,7 +38,7 @@
     .container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px; /* MODIFIED: Increased whitespace */
+      gap: 30px;
       width: 100%;
       max-width: 1100px;
       align-items: stretch;
@@ -65,7 +65,7 @@
 
     .card {
       background: var(--card-bg);
-      padding: 50px; /* MODIFIED: Increased whitespace */
+      padding: 40px;
       text-align: center;
       border: 1px solid rgba(212, 175, 55, 0.3);
       box-shadow:
@@ -119,7 +119,7 @@
 
 
     .section {
-      margin: 35px 0; /* MODIFIED: Increased whitespace */
+      margin: 25px 0;
       text-align: center;
       width: 100%;
     }
@@ -143,7 +143,7 @@
     .links {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px; /* MODIFIED: Increased whitespace */
+      gap: 16px;
       margin-top: 20px;
       justify-items: center;
     }
@@ -171,18 +171,28 @@
       animation: scale-in 0.4s ease-out forwards;
     }
     
+    /* --- MODIFICATION START --- */
+    
+    /* This is the new, more powerful hover effect for the button you are pointing at */
     .link:hover {
       border-color: var(--accent);
       color: var(--accent);
+      /* Increased the scale and upward movement for a stronger "pop" */
       transform: translateY(-8px) scale(1.2); 
+      /* Enhanced the shadow to make it glow more */
       box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+      /* Added z-index to ensure the hovered button is on top of the others */
       z-index: 10;
     }
 
+    /* This is a NEW rule that creates the "concentration" effect */
+    /* When you hover over a group of links, the ones you are NOT hovering over will shrink and fade slightly */
     .links:hover .link:not(:hover) {
         transform: scale(0.9);
         opacity: 0.6;
     }
+    
+    /* --- MODIFICATION END --- */
 
     .link i {
       transition: color 0.3s ease, transform 0.3s ease;
@@ -234,7 +244,7 @@
 
     .company {
       background: linear-gradient(145deg, #1a1a1a, #000);
-      padding: 50px; /* MODIFIED: Increased whitespace */
+      padding: 40px;
       border: 1px solid rgba(212, 175, 55, 0.5);
       box-shadow:
         0 12px 35px rgba(0, 0, 0, 0.6),
