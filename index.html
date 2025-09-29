@@ -51,6 +51,20 @@
       box-sizing: border-box;
       margin: 10px 0;
       transition: all 0.4s ease;
+      opacity: 0;               /* start hidden */
+      transform: translateY(30px); /* slide up effect */
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    /* Stagger company after card */
+    .card { animation-delay: 0.2s; }
+    .company { animation-delay: 0.5s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .card {
@@ -132,7 +146,27 @@
       border: 1px solid transparent;
       position: relative;
       width: 100%;
+      opacity: 0;             /* start hidden */
+      transform: scale(0.8);  /* pop in */
+      animation: popIn 0.5s forwards;
     }
+
+    @keyframes popIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* stagger icons */
+    .links .link:nth-child(1) { animation-delay: 0.8s; }
+    .links .link:nth-child(2) { animation-delay: 1.0s; }
+    .links .link:nth-child(3) { animation-delay: 1.2s; }
+    .links .link:nth-child(4) { animation-delay: 1.4s; }
+    .links .link:nth-child(5) { animation-delay: 1.6s; }
+    .links .link:nth-child(6) { animation-delay: 1.8s; }
+    .links .link:nth-child(7) { animation-delay: 2.0s; }
+    .links .link:nth-child(8) { animation-delay: 2.2s; }
 
     .link:hover {
       border-color: var(--accent);
