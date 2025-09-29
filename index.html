@@ -67,7 +67,7 @@
     }
 
     .card:hover {
-      transform: translateY(-8px) scale(1.02);
+      transform: translateY(-8px);
       box-shadow:
         0 18px 40px rgba(0, 0, 0, 0.7),
         0 0 25px rgba(212, 175, 55, 0.3),
@@ -132,11 +132,8 @@
       border: 1px solid transparent;
       position: relative;
       width: 100%;
-      opacity: 0; /* entrance start */
-      transform: scale(0.8);
     }
 
-    /* Hover effects unchanged */
     .link:hover {
       border-color: var(--accent);
       color: var(--accent);
@@ -153,7 +150,6 @@
       transform: scale(1.1);
     }
 
-    /* Tooltip */
     .tooltip::after {
       content: attr(data-tooltip);
       position: absolute;
@@ -204,11 +200,10 @@
       text-align: left;
       position: relative;
       overflow: hidden;
-      transition: all 0.4s ease;
     }
 
     .company:hover {
-      transform: translateY(-8px) scale(1.02);
+      transform: translateY(-8px);
       box-shadow:
         0 18px 45px rgba(0, 0, 0, 0.75),
         0 0 30px rgba(212, 175, 55, 0.35),
@@ -260,23 +255,6 @@
       border-bottom-right-radius: 20px;
     }
 
-    /* Entrance animation keyframes */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px) scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* When visible, animate in */
-    .link.show {
-      animation: fadeUp 0.6s ease forwards;
-    }
-
     @media (max-width: 900px) {
       .container {
         grid-template-columns: 1fr;
@@ -304,7 +282,7 @@
       <!-- Social Icons -->
       <div class="section">
         <div class="section-title">Social Media</div>
-        <div class="links social-links">
+        <div class="links">
           <a href="https://www.youtube.com/@anhkietchu1798" class="link tooltip" data-tooltip="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
           <a href="https://discord.gg/N7A3cXRavQ" class="link tooltip" data-tooltip="Discord" target="_blank"><i class="fab fa-discord"></i></a>
           <a href="https://www.facebook.com/" class="link tooltip" data-tooltip="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -319,7 +297,7 @@
       <!-- Messaging Icons -->
       <div class="section">
         <div class="section-title">Messages</div>
-        <div class="links message-links">
+        <div class="links">
           <a href="https://t.me/Chuanhkiet" class="link tooltip" data-tooltip="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
           <a href="https://wa.me/84931269286" class="link tooltip" data-tooltip="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
           <a href="mailto:chuanhkiet4a6@gmail.com" class="link tooltip" data-tooltip="Email"><i class="fas fa-envelope"></i></a>
@@ -336,28 +314,12 @@
           Your company/brand name here. Add description about the collaboration, role, or achievements.
           This block is styled to stand out and balance against your personal profile.
         </p>
+        <p>
+        </p>
+        <p>
+        </p>
       </div>
     </div>
   </div>
-
-  <script>
-    // Stagger Social Links
-    const socialLinks = document.querySelectorAll('.social-links .link');
-    socialLinks.forEach((link, i) => {
-      setTimeout(() => {
-        link.classList.add('show');
-      }, i * 150); // stagger 150ms each
-    });
-
-    // Stagger Message Links after socials
-    const messageLinks = document.querySelectorAll('.message-links .link');
-    socialLinks[socialLinks.length - 1].addEventListener('animationend', () => {
-      messageLinks.forEach((link, i) => {
-        setTimeout(() => {
-          link.classList.add('show');
-        }, i * 150);
-      });
-    });
-  </script>
 </body>
 </html>
